@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <J3STimer tit="JSSS Timer"/>
   </div>
 </template>
 
 <script>
+import J3STimer from './components/J3STimer.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+      J3STimer
   }
 }
 </script>
@@ -23,6 +24,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+    div {
+        box-sizing: border-box;
+    }
 </style>
