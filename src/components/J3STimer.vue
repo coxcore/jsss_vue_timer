@@ -80,7 +80,6 @@ export default {
         position: absolute;
         width: 100%;
         height: 100%;
-        border: 10px solid #999;
 
         h1 {
             font-size: 8vw;
