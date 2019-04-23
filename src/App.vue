@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <J3STimer tit="JSSS Timer"/>
+      <J3STimer tit="JSSS' Timer"/>
   </div>
 </template>
 

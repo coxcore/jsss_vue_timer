@@ -11,15 +11,8 @@
 			tenMillisecond: 0,
 			second: 0,
             minute: 0,
-            time: "00:00:00",
-        }),
-        methods: {
-			start() {
-				setInterval(() => {
-					this.tenMillisecond++;
-                }, 10);
-            },
-        }
+            time: "00:00.00",
+        })
 	};
 </script>
 
