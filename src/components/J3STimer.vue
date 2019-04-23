@@ -8,7 +8,7 @@
         />
         <div class="button_area">
             <button id="start" type="button" v-if="isStop" v-on:click="onStartClick">Start</button>
-            <button id="stop" type="button" v-if="!isStop" v-on:click="onStopClick">Stop</button>
+            <button id="stop" type="button" v-else v-on:click="onStopClick">Stop</button>
             <button id="reset" type="button" v-on:click="onResetClick">Reset</button>
         </div>
     </div>
