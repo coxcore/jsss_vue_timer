@@ -37,7 +37,7 @@
 
 <style scoped>
 .time {
-    font-size: 16vw;
+    font-size: 20vw;
     font-weight: bold;
 }
 </style>

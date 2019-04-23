@@ -87,18 +87,18 @@ export default {
         }
 
         .button_area {
-            margin-top: 4vw;
+            margin-top: 10vw;
 
             button {
-                margin-left: 3vw;
-                width: 15vw;
-                height: 8vw;
+                margin-left: 7vw;
+                width: 30vw;
+                height: 17vw;
+                font-size: 6vw;
                 background-color: #999999;
-                border-radius: 1vw;
+                border-radius: 10vw;
                 border: 0;
                 color: #fff;
                 font-weight: bold;
-                font-size: 3vw;
             }
 
             button:nth-child(1) {
