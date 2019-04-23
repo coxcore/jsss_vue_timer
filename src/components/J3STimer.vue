@@ -2,13 +2,13 @@
     <div class="comp">
         <h1>{{ tit }}</h1>
         <TimeView
-                v-bind:minute="minute"
-                v-bind:second="second"
-                v-bind:tenMillisecond="tenMillisecond"
+                :minute="minute"
+                :second="second"
+                :tenMillisecond="tenMillisecond"
         />
         <div class="button_area">
-            <button id="start" type="button" v-on:click="onStartClick">Start</button>
-            <button id="stop" type="button" v-on:click="onStopClick">Stop</button>
+            <button id="start" type="button" v-if="isStop" v-on:click="onStartClick">Start</button>
+            <button id="stop" type="button" v-if="!isStop" v-on:click="onStopClick">Stop</button>
             <button id="reset" type="button" v-on:click="onResetClick">Reset</button>
         </div>
     </div>
@@ -26,6 +26,7 @@ export default {
     },
     data() {
     	return {
+            isStop: true,
             tenMillisecond: 0,
 			second: 0,
 			minute: 0,
@@ -39,6 +40,9 @@ export default {
 		onStartClick() {
 			if (timer)
 				return;
+
+			this.isStop = false;
+
 			timer = setInterval(() => {
 				if (this.tenMillisecond === 99) {
 					this.tenMillisecond = 0;
@@ -56,11 +60,11 @@ export default {
 
         },
         onStopClick() {
+			this.isStop = true;
 			clearInterval(timer);
 			timer = null;
         },
         onResetClick() {
-			clearInterval(timer);
 			this.tenMillisecond = 0;
 			this.second = 0;
 			this.minute = 0;
