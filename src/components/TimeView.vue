@@ -1,18 +1,37 @@
 <template>
     <div class="time">
-        {{time}}
+        {{minuteStr}}:{{secondStr}}.{{tenMillisecondStr}}
     </div>
 </template>
 
 <script>
 	export default {
 		name: 'TimeView',
-        data: () => ({
-			tenMillisecond: 0,
-			second: 0,
-            minute: 0,
-            time: "00:00.00",
-        })
+        props: {
+			minute: Number,
+			second: Number,
+			tenMillisecond: Number,
+        },
+        methods: {
+			disitNum(num) {
+                if (num < 10) {
+                	return "0" + num;
+                } else {
+                	return "" + num;
+                }
+            }
+        },
+        computed: {
+			minuteStr() {
+                return this.disitNum(this.minute);
+            },
+			secondStr() {
+				return this.disitNum(this.second);
+			},
+			tenMillisecondStr() {
+				return this.disitNum(this.tenMillisecond);
+			},
+        }
 	};
 </script>
 

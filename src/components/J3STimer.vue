@@ -1,7 +1,11 @@
 <template>
     <div class="comp">
         <h1>{{ tit }}</h1>
-        <TimeView/>
+        <TimeView
+                v-bind:minute="minute"
+                v-bind:second="second"
+                v-bind:tenMillisecond="tenMillisecond"
+        />
         <div class="button_area">
             <button id="start" type="button" v-on:click="onStartClick">Start</button>
             <button id="stop" type="button" v-on:click="onStopClick">Stop</button>
@@ -11,27 +15,57 @@
 </template>
 
 <script>
-import TimeView from './TimeView.vue'
+import TimeView from './TimeView.vue';
+
+let timer;
+
 export default {
     name: 'J3STimer',
     props: {
         tit: String
     },
+    data() {
+    	return {
+            tenMillisecond: 0,
+			second: 0,
+			minute: 0,
+
+        };
+    },
 	components: {
     	TimeView,
     },
     methods: {
-		onStartClick(e) {
-			console.log(e);
+		onStartClick() {
+			if (timer)
+				return;
+			timer = setInterval(() => {
+				if (this.tenMillisecond === 99) {
+					this.tenMillisecond = 0;
+					if (this.second === 59) {
+						this.second = 0;
+						this.minute++;
+                    } else {
+						this.second++;
+                    }
+                } else {
+					this.tenMillisecond++;
+                }
+                console.log(this.tenMillisecond);
+			}, 10)
+
         },
-        onStopClick(e) {
-			console.log(e);
+        onStopClick() {
+			clearInterval(timer);
+			timer = null;
         },
-        onResetClick(e) {
-			console.log(e);
+        onResetClick() {
+			clearInterval(timer);
+			this.tenMillisecond = 0;
+			this.second = 0;
+			this.minute = 0;
         }
     }
-
 };
 </script>
 
