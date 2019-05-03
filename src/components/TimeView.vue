@@ -13,7 +13,7 @@
 			tenMillisecond: Number,
         },
         methods: {
-			disitNum(num) {
+			digitNum(num) {
                 if (num < 10) {
                 	return "0" + num;
                 } else {
@@ -23,13 +23,13 @@
         },
         computed: {
 			minuteStr() {
-                return this.disitNum(this.minute);
+                return this.digitNum(this.minute);
             },
 			secondStr() {
-				return this.disitNum(this.second);
+				return this.digitNum(this.second);
 			},
 			tenMillisecondStr() {
-				return this.disitNum(this.tenMillisecond);
+				return this.digitNum(this.tenMillisecond);
 			},
         }
 	};
