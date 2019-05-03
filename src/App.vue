@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-      <J3STimer tit="JSSS' Timer"/>
+      <TimerContainer tit="JSSS' Timer"/>
   </div>
 </template>
 
 <script>
-import J3STimer from './components/J3STimer.vue'
+import TimerContainer from './components/TimerContainer.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-      J3STimer
+	  TimerContainer
   }
 }
 </script>

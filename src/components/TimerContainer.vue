@@ -20,7 +20,7 @@ import TimeView from './TimeView.vue';
 let timer;
 
 export default {
-    name: 'J3STimer',
+    name: 'TimerContainer',
     props: {
         tit: String
     },
