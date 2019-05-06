@@ -1,6 +1,6 @@
 <template>
     <div class="comp" ref="comp">
-        <span class="label">Lap {{lap.index}}</span>
+        <span>Lap {{lap.index}}</span>
         <TimeView :isStop="lap.isStop" style="float: right; margin-right: 4vw"/>
     </div>
 </template>
@@ -18,7 +18,7 @@
 		},
 		components: {
 			TimeView,
-		},
+		}
 	};
 </script>
 
@@ -26,9 +26,6 @@
     .comp {
         text-align: left;
         font-size: 6vw;
-    }
-
-    .label {
-        margin-left: 4vw;
+        margin: 0 5vw;
     }
 </style>
