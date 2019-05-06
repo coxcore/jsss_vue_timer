@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li class="LapListItem" v-for="lap in laps">
+        <li v-for="lap in laps">
             <LapListItem :lap="lap"/>
         </li>
     </ul>
