@@ -1,5 +1,5 @@
 <template>
-    <div class="LapListItem">
+    <div class="comp" ref="comp">
         <span class="label">Lap {{lap.index}}</span>
         <TimeView :isStop="lap.isStop" style="float: right; margin-right: 4vw"/>
     </div>
@@ -19,17 +19,19 @@
 		components: {
 			TimeView,
 		},
+        mounted() {
+            this.$refs.comp.scrollIntoView();
+        }
 	};
 </script>
 
 <style lang="scss">
-    .LapListItem {
+    .comp {
         text-align: left;
         font-size: 6vw;
+    }
 
-        .label {
-            margin-left: 4vw;
-            /*float: left;*/
-        }
+    .label {
+        margin-left: 4vw;
     }
 </style>
