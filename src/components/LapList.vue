@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="lap in laps">
+        <li v-for="(lap, index) in laps" :style="{top: 14 * (laps.length - index - 1) + 'vw'}">
             <LapListItem :lap="lap"/>
         </li>
     </ul>
@@ -13,7 +13,7 @@
 		name: 'LapList',
 		props: {
 			lapIndex: Number,
-            isStop: Boolean,
+			isStop: Boolean,
 		},
 		data() {
 			return {
@@ -36,8 +36,8 @@
 			},
 			isStop(value) {
 				if (this.laps.length)
-    				this.laps[this.laps.length - 1].isStop = value;
-            }
+					this.laps[this.laps.length - 1].isStop = value;
+			},
 		},
 	};
 </script>
@@ -49,6 +49,8 @@
     }
 
     li {
+        position: absolute;
+        width: 100%;
         border-bottom: #DDD 1px solid;
         list-style: none;
         padding: 2vw;
