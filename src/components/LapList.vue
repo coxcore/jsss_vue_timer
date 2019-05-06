@@ -1,5 +1,5 @@
 <template>
-    <ul class="comp">
+    <ul>
         <li class="LapListItem" v-for="lap in laps">
             <LapListItem :lap="lap"/>
         </li>
@@ -38,15 +38,15 @@
 </script>
 
 <style lang="scss" scoped>
-    .comp {
-        border-top: #BBB 1px solid;
+    ul {
+        margin: 0;
         padding: 0;
+    }
 
-        li {
-            border-bottom: #DDD 1px solid;
-            list-style: none;
-            padding: 2vw;
-            font-size: 6vw;
-        }
+    li {
+        border-bottom: #DDD 1px solid;
+        list-style: none;
+        padding: 2vw;
+        font-size: 6vw;
     }
 </style>

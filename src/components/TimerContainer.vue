@@ -1,5 +1,5 @@
 <template>
-    <div class="comp">
+    <div class="root">
         <h1>{{ tit }}</h1>
         <TimeView
                 :isRoot="true"
@@ -12,7 +12,9 @@
             <button id="reset" type="button" v-if="isStop" v-on:click="onResetClick">Reset</button>
             <button id="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
         </div>
-        <LapList :lapIndex="lapIndex"/>
+        <div class="listArea">
+            <LapList :lapIndex="lapIndex"/>
+        </div>
     </div>
 </template>
 
@@ -30,7 +32,7 @@
 			return {
 				isStop: true,
 				isReset: true,
-                lapIndex: -1,
+				lapIndex: -1,
 			};
 		},
 		components: {
@@ -57,51 +59,62 @@
 </script>
 
 <style lang="scss" scoped>
-    .comp {
+    .root {
         margin: 0;
         display: block;
         position: absolute;
         width: 100%;
         height: 100%;
+    }
 
-        h1 {
-            font-size: 8vw;
+    h1 {
+        font-size: 8vw;
+    }
+
+    .button_area {
+        margin-top: 10vw;
+        margin-bottom: 10vw;
+
+        button {
+            margin-left: 7vw;
+            width: 30vw;
+            height: 17vw;
+            font-size: 6vw;
+            font-weight: bold;
+            background-color: #999999;
+            border-radius: 10vw;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+            // https://www.w3schools.com/cssref/css3_pr_user-select.asp
+            user-select: none; /* Standard syntax */
         }
 
-        .button_area {
-            margin-top: 10vw;
-            margin-bottom: 10vw;
-
-            button {
-                margin-left: 7vw;
-                width: 30vw;
-                height: 17vw;
-                font-size: 6vw;
-                font-weight: bold;
-                background-color: #999999;
-                border-radius: 10vw;
-                border: 0;
-                color: #fff;
-                cursor: pointer;
-                // https://www.w3schools.com/cssref/css3_pr_user-select.asp
-                user-select: none; /* Standard syntax */
-            }
-
-            button:nth-child(1) {
-                margin: 0;
-            }
-
-            #start {
-                background-color: lightgreen;
-            }
-
-            #stop {
-                background-color: indianred;
-            }
-
-            #lap {
-                background-color: deepskyblue;
-            }
+        button:nth-child(1) {
+            margin: 0;
         }
+
+        #start {
+            background-color: lightgreen;
+        }
+
+        #stop {
+            background-color: indianred;
+        }
+
+        #lap {
+            background-color: deepskyblue;
+        }
+    }
+
+    .listArea {
+        position: absolute;
+        height: 50vh;
+        width: 100%;
+        top: 50vh;
+        border-top: #ddd 1px solid;
+        background-color: #f6f6f6;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 </style>

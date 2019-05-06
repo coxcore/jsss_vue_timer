@@ -47,15 +47,14 @@
 				clearInterval(this.timer);
 				this.timer = null;
 			},
-            resetTimer() {
+			resetTimer() {
 				this.tenMillisecond = 0;
 				this.second = 0;
 				this.minute = 0;
-            },
+			},
 		},
 		watch: {
 			isStop(value) {
-				console.log(value);
 				if (value) {
 					this.stopTimer();
 				} else {
