@@ -26,10 +26,10 @@
 			lapIndex(value) {
 				if (value > -1) {
 					if (value !== 0)
-						this.laps[0].isPlay = false;
+						this.laps[0].isStop = false;
 
 					this.laps = [
-						{isPlay: true, index: value + 1},
+						{isStop: false, index: value + 1},
 						...this.laps,
 					];
 				} else {

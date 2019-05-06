@@ -1,22 +1,23 @@
 <template>
-    <div class="time">
+    <span :class="isRoot ? 'time' : ''">
         {{minuteStr}}:{{secondStr}}.{{tenMillisecondStr}}
-    </div>
+    </span>
 </template>
 
 <script>
-	let timer;
 	export default {
 		name: 'TimeView',
 		props: {
 			isStop: Boolean,
 			isReset: Boolean,
+			isRoot: Boolean,
 		},
 		data() {
 			return {
 				minute: 0,
 				second: 0,
 				tenMillisecond: 0,
+				timer: null,
 			};
 		},
 		methods: {
@@ -27,33 +28,43 @@
 					return '' + num;
 				}
 			},
+			startTimer() {
+				this.timer = setInterval(() => {
+					if (this.tenMillisecond === 99) {
+						this.tenMillisecond = 0;
+						if (this.second === 59) {
+							this.second = 0;
+							this.minute++;
+						} else {
+							this.second++;
+						}
+					} else {
+						this.tenMillisecond++;
+					}
+				}, 10);
+			},
+			stopTimer() {
+				clearInterval(this.timer);
+				this.timer = null;
+			},
+            resetTimer() {
+				this.tenMillisecond = 0;
+				this.second = 0;
+				this.minute = 0;
+            },
 		},
 		watch: {
 			isStop(value) {
+				console.log(value);
 				if (value) {
-					clearInterval(timer);
-					timer = null;
+					this.stopTimer();
 				} else {
-					timer = setInterval(() => {
-						if (this.tenMillisecond === 99) {
-							this.tenMillisecond = 0;
-							if (this.second === 59) {
-								this.second = 0;
-								this.minute++;
-							} else {
-								this.second++;
-							}
-						} else {
-							this.tenMillisecond++;
-						}
-					}, 10);
+					this.startTimer();
 				}
 			},
 			isReset(value) {
 				if (value) {
-					this.tenMillisecond = 0;
-					this.second = 0;
-					this.minute = 0;
+					this.resetTimer();
 				}
 			},
 		},
@@ -67,6 +78,11 @@
 			tenMillisecondStr() {
 				return this.digitNum(this.tenMillisecond);
 			},
+		},
+		created() {
+			if (!this.isStop) {
+				this.startTimer();
+			}
 		},
 	};
 </script>

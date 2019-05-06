@@ -1,14 +1,23 @@
 <template>
-    <sapn class="LapListItem">
+    <div class="LapListItem">
         <span class="label">Lap {{lap.index}}</span>
-    </sapn>
+        <TimeView :isStop="lap.isStop" style="float: right; margin-right: 4vw"/>
+    </div>
 </template>
 
 <script>
+	import TimeView from './TimeView.vue';
+
 	export default {
 		name: 'LapListItem',
 		props: {
-			lap: Object,
+			lap: {
+				index: Number,
+                isStop: Boolean,
+            },
+		},
+		components: {
+			TimeView,
 		},
 	};
 </script>
@@ -16,6 +25,7 @@
 <style lang="scss">
     .LapListItem {
         text-align: left;
+        font-size: 6vw;
 
         .label {
             margin-left: 4vw;

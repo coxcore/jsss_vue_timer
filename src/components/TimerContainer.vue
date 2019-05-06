@@ -2,6 +2,7 @@
     <div class="comp">
         <h1>{{ tit }}</h1>
         <TimeView
+                :isRoot="true"
                 :isStop="isStop"
                 :isReset="isReset"
         />
@@ -57,7 +58,7 @@
 
 <style lang="scss" scoped>
     .comp {
-        margin: 0px;
+        margin: 0;
         display: block;
         position: absolute;
         width: 100%;
