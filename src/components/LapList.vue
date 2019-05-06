@@ -55,5 +55,19 @@
         list-style: none;
         padding: 2vw;
         font-size: 6vw;
+        transition-property: top;
+        transition-duration: 0.3s;
+        animation-duration: 0.3s;
+        animation-name: slidein;
+    }
+
+    @keyframes slidein {
+        from {
+            margin-top: -14vw;
+        }
+
+        to {
+            margin-top: 0;
+        }
     }
 </style>

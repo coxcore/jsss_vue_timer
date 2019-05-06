@@ -22,7 +22,6 @@
 	import TimeView from './TimeView.vue';
 	import LapList from './LapList.vue';
 
-
 	export default {
 		name: 'TimerContainer',
 		props: {

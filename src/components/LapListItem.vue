@@ -18,7 +18,10 @@
 		},
 		components: {
 			TimeView,
-		}
+		},
+		mounted() {
+			this.$refs.comp.scrollIntoView();
+		},
 	};
 </script>
 
