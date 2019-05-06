@@ -11,11 +11,13 @@
             <button id="reset" type="button" v-if="isStop" v-on:click="onResetClick">Reset</button>
             <button id="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
         </div>
+        <LapList :lapIndex="lapIndex"/>
     </div>
 </template>
 
 <script>
 	import TimeView from './TimeView.vue';
+	import LapList from './LapList.vue';
 
 
 	export default {
@@ -27,10 +29,12 @@
 			return {
 				isStop: true,
 				isReset: true,
+                lapIndex: -1,
 			};
 		},
 		components: {
 			TimeView,
+			LapList,
 		},
 		methods: {
 			onStartClick() {
@@ -42,8 +46,10 @@
 			},
 			onResetClick() {
 				this.isReset = true;
+				this.lapIndex = -1;
 			},
 			onLapClick() {
+				this.lapIndex++;
 			},
 		},
 	};
@@ -63,17 +69,21 @@
 
         .button_area {
             margin-top: 10vw;
+            margin-bottom: 10vw;
 
             button {
                 margin-left: 7vw;
                 width: 30vw;
                 height: 17vw;
                 font-size: 6vw;
+                font-weight: bold;
                 background-color: #999999;
                 border-radius: 10vw;
                 border: 0;
                 color: #fff;
-                font-weight: bold;
+                cursor: pointer;
+                // https://www.w3schools.com/cssref/css3_pr_user-select.asp
+                user-select: none; /* Standard syntax */
             }
 
             button:nth-child(1) {
