@@ -1,7 +1,7 @@
 <template>
-    <li class="LapListItem">
-        <span>Lap</span>
-    </li>
+    <sapn class="LapListItem">
+        <span class="label">Lap {{lap.index}}</span>
+    </sapn>
 </template>
 
 <script>
@@ -13,12 +13,13 @@
 	};
 </script>
 
-<style>
+<style lang="scss">
     .LapListItem {
-        border-bottom: #DDD 1px solid;
-        list-style: none;
-        padding: 2vw;
-        font-size: 6vw;
-    }
+        text-align: left;
 
+        .label {
+            margin-left: 4vw;
+            /*float: left;*/
+        }
+    }
 </style>

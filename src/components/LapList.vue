@@ -1,6 +1,8 @@
 <template>
     <ul class="comp">
-        <LapListItem v-for="lap in laps"/>
+        <li class="LapListItem" v-for="lap in laps">
+            <LapListItem :lap="lap"/>
+        </li>
     </ul>
 </template>
 
@@ -27,7 +29,7 @@
 						this.laps[0].isPlay = false;
 
 					this.laps = [
-						{isPlay: true, index: value},
+						{isPlay: true, index: value + 1},
 						...this.laps,
 					];
 				} else {
@@ -38,9 +40,16 @@
 	};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .comp {
         border-top: #BBB 1px solid;
         padding: 0;
+
+        li {
+            border-bottom: #DDD 1px solid;
+            list-style: none;
+            padding: 2vw;
+            font-size: 6vw;
+        }
     }
 </style>
