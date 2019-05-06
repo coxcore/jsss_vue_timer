@@ -13,6 +13,7 @@
 		name: 'LapList',
 		props: {
 			lapIndex: Number,
+            isStop: Boolean,
 		},
 		data() {
 			return {
@@ -33,6 +34,10 @@
 					this.laps = [];
 				}
 			},
+			isStop(value) {
+				if (this.laps.length)
+    				this.laps[this.laps.length - 1].isStop = value;
+            }
 		},
 	};
 </script>

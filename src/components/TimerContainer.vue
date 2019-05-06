@@ -13,7 +13,7 @@
             <button class="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
         </div>
         <div class="listArea">
-            <LapList :lapIndex="lapIndex"/>
+            <LapList :isStop="isStop" :lapIndex="lapIndex"/>
         </div>
     </div>
 </template>
