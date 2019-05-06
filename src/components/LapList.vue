@@ -26,12 +26,9 @@
 			lapIndex(value) {
 				if (value > -1) {
 					if (value !== 0)
-						this.laps[0].isStop = false;
+						this.laps[value - 1].isStop = true;
 
-					this.laps = [
-						{isStop: false, index: value + 1},
-						...this.laps,
-					];
+					this.laps.push({isStop: false, index: value + 1});
 				} else {
 					this.laps = [];
 				}
