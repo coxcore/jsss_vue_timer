@@ -13,8 +13,8 @@
 		props: {
 			lap: {
 				index: Number,
-                isStop: Boolean,
-            },
+				isStop: Boolean,
+			},
 		},
 		components: {
 			TimeView,
