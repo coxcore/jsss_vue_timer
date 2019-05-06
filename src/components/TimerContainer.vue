@@ -7,10 +7,10 @@
                 :isReset="isReset"
         />
         <div class="button_area">
-            <button id="start" type="button" v-if="isStop" v-on:click="onStartClick">Start</button>
-            <button id="stop" type="button" v-else v-on:click="onStopClick">Stop</button>
-            <button id="reset" type="button" v-if="isStop" v-on:click="onResetClick">Reset</button>
-            <button id="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
+            <button class="start" type="button" v-if="isStop" v-on:click="onStartClick">Start</button>
+            <button class="stop" type="button" v-else v-on:click="onStopClick">Stop</button>
+            <button class="reset" type="button" v-if="isStop" v-on:click="onResetClick">Reset</button>
+            <button class="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
         </div>
         <div class="listArea">
             <LapList :lapIndex="lapIndex"/>
@@ -94,15 +94,15 @@
             margin: 0;
         }
 
-        #start {
+        .start {
             background-color: lightgreen;
         }
 
-        #stop {
+        .stop {
             background-color: indianred;
         }
 
-        #lap {
+        .lap {
             background-color: deepskyblue;
         }
     }
