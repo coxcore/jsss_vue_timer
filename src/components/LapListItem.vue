@@ -1,28 +1,29 @@
 <template>
-    <div class="comp" ref="comp">
-        <span>Lap {{lap.index}}</span>
-        <TimeView :isStop="lap.isStop" style="float: right; margin-right: 4vw"/>
+    <div class="comp">
+        <span>{{ label }}</span>
+        <TimeView :record="record"/>
     </div>
 </template>
 
 <script>
-	import TimeView from './TimeView.vue';
+    import TimeView from './TimeView.vue';
 
-	export default {
-		name: 'LapListItem',
-		props: {
-			lap: {
-				index: Number,
-				isStop: Boolean,
-			},
-		},
-		components: {
-			TimeView,
-		},
-		mounted() {
-			this.$refs.comp.scrollIntoView();
-		},
-	};
+    export default {
+        name: 'LapListItem',
+        props: {
+            label: {
+                type: String,
+                default: 'Lap',
+            },
+            record: {
+                type: Number,
+                default: 0,
+            }
+        },
+        components: {
+            TimeView,
+        },
+    };
 </script>
 
 <style lang="scss">

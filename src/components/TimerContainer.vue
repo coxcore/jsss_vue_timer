@@ -1,11 +1,7 @@
 <template>
     <div class="root">
-        <h1>{{ tit }}</h1>
-        <TimeView
-                :isRoot="true"
-                :isStop="isStop"
-                :isReset="isReset"
-        />
+        <h1>{{ title }}</h1>
+        <TimeView displayType="big" :record="time" />
         <div class="button_area">
             <button class="start" type="button" v-if="isStop" v-on:click="onStartClick">Start</button>
             <button class="stop" type="button" v-else v-on:click="onStopClick">Stop</button>
@@ -13,48 +9,58 @@
             <button class="lap" type="button" v-else v-on:click="onLapClick">Lap</button>
         </div>
         <div class="listArea">
-            <LapList :isStop="isStop" :lapIndex="lapIndex"/>
+            <LapList :records="records" />
         </div>
     </div>
 </template>
 
 <script>
-	import TimeView from './TimeView.vue';
-	import LapList from './LapList.vue';
+    import TimeView from './TimeView.vue';
+    import LapList from './LapList.vue';
 
-	export default {
-		name: 'TimerContainer',
-		props: {
-			tit: String,
-		},
-		data() {
-			return {
-				isStop: true,
-				isReset: true,
-				lapIndex: -1,
-			};
-		},
-		components: {
-			TimeView,
-			LapList,
-		},
-		methods: {
-			onStartClick() {
-				this.isStop = false;
-				this.isReset = false;
-			},
-			onStopClick() {
-				this.isStop = true;
-			},
-			onResetClick() {
-				this.isReset = true;
-				this.lapIndex = -1;
-			},
-			onLapClick() {
-				this.lapIndex++;
-			},
-		},
-	};
+    export default {
+        name: 'TimerContainer',
+        props: {
+            title: {
+                type:String,
+                default: 'Timer',
+            },
+            time: {
+                type:Number,
+                default: 0,
+            },
+            isStop: {
+                type: Boolean,
+                default: true,
+            },
+            lap: {
+                type: Number,
+                default: 0,
+            },
+            records: {
+                type: Array,
+                default: null,
+            },
+        },
+        components: {
+            TimeView,
+            LapList,
+        },
+        methods: {
+            onStartClick() {
+                this.$emit('update:isStop', false);
+            },
+            onStopClick() {
+                this.$emit('update:isStop', true);
+            },
+            onResetClick() {
+                this.$emit('update:lap', 0);
+            },
+            onLapClick() {
+                this.$emit('update:lap', this.lap + 1);
+            },
+        },
+    };
 </script>
 
 <style lang="scss" scoped>
